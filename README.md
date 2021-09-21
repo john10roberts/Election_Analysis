@@ -83,8 +83,9 @@ Last gave the script the ability to write those results to a text file that coul
     txt_file.write(largest_county_turnout)
 
 ## Election Audit Results
-The analysis of the election show that:
 ![Results](https://github.com/john10roberts/Election_Analysis/blob/main/Resources/AllResults.png)
+
+The analysis of the election show that:
 - There were 369,711 votes cast in the election.
 - The candidates were:
   - Charles Casper Stockham
@@ -98,6 +99,7 @@ The winner of the election was:
 - Diana DeGette with 272,892, 73.8% of the total 369,911
 
 Additional Information requested by Election Committee:
+
 ![Additional Results](https://github.com/john10roberts/Election_Analysis/blob/main/Resources/CountyResults.png)
   - Voter turnout for each county
     - Jefferson: 38,855
