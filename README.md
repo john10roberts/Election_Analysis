@@ -84,7 +84,7 @@ Last gave the script the ability to write those results to a text file that coul
 
 ## Election Audit Results
 The analysis of the election show that:
-![Results](https://github.com/john10roberts/Election_Analysis/blob/main/Resources/election_results.csv.png)
+![Results](https://github.com/john10roberts/Election_Analysis/blob/main/Resources/AllResults.png)
 - There were 369,711 votes cast in the election.
 - The candidates were:
   - Charles Casper Stockham
@@ -98,6 +98,7 @@ The winner of the election was:
 - Diana DeGette with 272,892, 73.8% of the total 369,911
 
 Additional Information requested by Election Committee:
+![Additional Results](https://github.com/john10roberts/Election_Analysis/blob/main/Resources/CountyResults.png)
   - Voter turnout for each county
     - Jefferson: 38,855
     - Denver: 306,055
@@ -112,4 +113,41 @@ Additional Information requested by Election Committee:
 ## Election Audit Summary
 
 The script we have created could be used to evaluate elections from the local levels i.e., specific districts, to national elections based on the state outcome.  To accomplish these additional lists and data_dictionaries would need to be created to keep accurate counts of the districts/states involved in the analysis.  For each list/dictionary added you would need to add an addtional if statement in the loop structure that reads in the csv files to account for each district/state to be tracked. You would also need to create another loop that would loop through each new dictionary created for the district/state that you needed.  Lastly, then update the print statements to ensure that all the new districts/states were added.  Ex: 
+
+district_names = []
+district_votes = {}
+
+ld_turnout = ""
+ld_voter = 0
+
+    for row in reader:
+        total_votes = total_votes + 1
+        candidate_name = row[2]
+
+        district_name = row[x]
+        if district_name not in district_names:
+            district_names.append(district_name)
+
+            district_votes[district_name] = 0
+
+        district_votes[district_name] += 1
+
+    for district in district_votes:
+        district_vote = district_votes[district]
+        district_percent = int(district_vote) / int(district_votes) * 100
+
+        county_results = (f"{district}: {district_percent:.1f}% ({district_vote:,})")
+        print(district_results)
+        txt_file.write(district_results)
+
+        if (district_vote > ld_voter):
+            ld_voter = district_vote
+            ld_turnout = district
+
+    largest_district_turnout = (
+    f"-------------------------\n"
+    f"Largest District Turnout {ld_turnout}\n"
+    f"-------------------------\n"
+    )
+    print(largest_district_turnout)
 
